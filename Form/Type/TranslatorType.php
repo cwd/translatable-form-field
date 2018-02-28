@@ -62,7 +62,9 @@ class TranslatorType extends AbstractType
                 continue;
             }
 
-            $form->get($locale)->setData($translatedFieldValues[$locale]);
+            if (!$form->isSubmitted()) {
+                $form->get($locale)->setData($translatedFieldValues[$locale]);
+            }
         }
 
         // template vars
